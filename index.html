@@ -15,6 +15,29 @@
       <br>
       Price:<input type="number" name="price" ng-model="hCtrl.plate.price">
       <button type="submit">Submit Plate</button>
+      
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+      
+      function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+}
+      
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+      
+      <a href="#" onclick="signOut();">Sign out</a>
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
+      
     </form>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
     <script type="text/javascript" src="app.js"></script>
